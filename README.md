@@ -73,3 +73,4 @@ django_HA/
 ## License
 
 This project is for educational purposes.
+
