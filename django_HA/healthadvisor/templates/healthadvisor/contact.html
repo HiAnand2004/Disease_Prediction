@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AI Health Advisor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <!-- Your existing styles remain the same -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        .contact-section {
+            background-color: #d1c9f3;
+            padding: 6rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+        .title-font {
+            font-weight: 500;
+        }
+        .text-gray-900 {
+            color: #111827;
+        }
+        .leading-relaxed {
+            line-height: 1.625;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .p-2 {
+            padding: 0.5rem;
+        }
+        .w-1\/2 {
+            width: 50%;
+        }
+        .w-full {
+            width: 100%;
+        }
+        .relative {
+            position: relative;
+        }
+        .leading-7 {
+            line-height: 1.75rem;
+        }
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        .text-gray-600 {
+            color: #4b5563;
+        }
+        .bg-gray-100 {
+  background-color: rgba(243, 244, 246, 0.5); 
+}
+        .rounded {
+            border-radius: 0.25rem;
+        }
+        .border {
+            border-width: 1px;
+        }
+        .border-gray-300 {
+            border-color: #d1d5db;
+        }
+        .focus\:border-indigo-500:focus {
+            border-color: #6366f1;
+        }
+        .focus\:bg-white:focus {
+            background-color: #ffffff;
+        }
+        .focus\:ring-2:focus {
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5);
+        }
+        .focus\:ring-indigo-200:focus {
+            box-shadow: 0 0 0 2px rgba(199, 210, 254, 0.5);
+        }
+        .text-base {
+            font-size: 1rem;
+        }
+        .outline-none {
+            outline: 2px solid transparent;
+            outline-offset: 2px;
+        }
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        .leading-8 {
+            line-height: 2rem;
+        }
+        .transition-colors {
+            transition-property: background-color, border-color, color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        .duration-200 {
+            transition-duration: 200ms;
+        }
+        .ease-in-out {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .h-32 {
+            height: 8rem;
+        }
+        .resize-none {
+            resize: none;
+        }
+        .leading-6 {
+            line-height: 1.5rem;
+        }
+        .text-white {
+            color: #ffffff;
+        }
+        .bg-indigo-500 {
+            background-color: #6366f1;
+        }
+        .hover\:bg-indigo-600:hover {
+            background-color: #4f46e5;
+        }
+        .text-lg {
+            font-size: 1.125rem;
+        }
+        .pt-8 {
+            padding-top: 2rem;
+        }
+        .mt-8 {
+            margin-top: 2rem;
+        }
+        .border-t {
+            border-top-width: 1px;
+        }
+        .border-gray-200 {
+            border-color: #e5e7eb;
+        }
+        .text-indigo-500 {
+            color: #6366f1;
+        }
+        .my-5 {
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+        .inline-flex {
+            display: inline-flex;
+        }
+        .text-gray-500 {
+            color: #6b7280;
+        }
+        .ml-4 {
+            margin-left: 1rem;
+        }
+        .w-5 {
+            width: 1.25rem;
+        }
+        .h-5 {
+            height: 1.25rem;
+        }
+        button {
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .w-1\/2 {
+                width: 100%;
+            }
+            .contact-section {
+                padding: 3rem 1rem;
+            }
+        }
+        .alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+}
+
+.alert-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+}
+    </style>
+</head>
+<body>
+    <section class="contact-section">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-col text-center w-full mb-12">
+                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Contact Us</h1>
+                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">Please make sure to provide useful information - idle emails will be ignored</p>
+            </div>
+            <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                <form method="post" action="{% url 'contact' %}">
+                    {% csrf_token %}
+                    <div class="flex flex-wrap -m-2">
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-sm text-gray-600">Name</label>
+                                <input type="text" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+                            </div>
+                        </div>
+                        <div class="p-2 w-1/2">
+                            <div class="relative">
+                                <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
+                                <input type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required>
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
+                                <textarea id="message" name="message" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required></textarea>
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <button type="submit" class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">Submit</button>
+                        </div>
+                        <div class="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
+                            <a href="mailto:g22.sarthak.sunil@gnkhalsa.edu.in" class="text-indigo-500">g22.sarthak.sunil@gnkhalsa.edu.in</a>
+                            <p class="leading-normal my-5">421 Sarthak Deshmukh<br>Maharashtra, Mumbai: 400033</p>
+                            <span class="inline-flex">
+                                <a href="https://facebook.com" target="_blank" class="text-gray-500">
+                                    <i class="ti ti-brand-facebook"></i>
+                                </a>
+                                <a href="https://twitter.com" target="_blank" class="ml-4 text-gray-500">
+                                    <i class="ti ti-brand-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="ml-4 text-gray-500">
+                                    <i class="ti ti-brand-instagram"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="ml-4 text-gray-500">
+                                    <i class="ti ti-brand-linkedin"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

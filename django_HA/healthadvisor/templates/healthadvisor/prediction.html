@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Health Prediction</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"
+    />
+    <style>
+        /* Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .main-header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px 0;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2c3e50;
+            text-decoration: none;
+        }
+        
+        /* Main Content */
+        .prediction-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            flex: 1;
+        }
+        
+        .prediction-header {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        /* Form Styles */
+        .input-section {
+            margin-bottom: 30px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .symptoms-input {
+            width: 100%;
+            min-height: 150px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            line-height: 1.5;
+        }
+        
+        .symptoms-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .predict-button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .predict-button:hover {
+            background-color: #1a252f;
+        }
+        
+        /* Results Section */
+        .results-section {
+            margin-top: 30px;
+            padding: 25px;
+            background-color: #f8fafc;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+        
+        .result-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .prediction-result {
+            font-size: 18px;
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        
+        .confidence-meter {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .confidence-level {
+            height: 100%;
+            background: #10b981;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .confidence-value {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .suggestions {
+            margin-top: 20px;
+        }
+        
+        .suggestions-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .recommendations {
+            list-style-type: none;
+        }
+        
+        .recommendations li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .recommendations li:before {
+            content: "•";
+            color: #3498db;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 4px;
+        }
+        
+        /* Action Buttons */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        .action-button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+        
+        .action-button:hover {
+            background-color: #1a252f;
+        }
+        .severity-indicator {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.05);
+}
+
+/* Enhanced confidence meter */
+.confidence-meter {
+    position: relative;
+    margin: 20px 0;
+}
+
+.confidence-level {
+    height: 8px;
+    border-radius: 4px;
+    transition: width 0.8s ease-out;
+}
+
+/* Color confidence levels */
+.confidence-low { background-color: #ef4444; }      /* Red for <50% */
+.confidence-medium { background-color: #f59e0b; }  /* Yellow for 50-75% */
+.confidence-high { background-color: #10b981; }    /* Green for >75% */
+
+/* Recommendation priorities */
+.recommendations li.priority-high {
+    font-weight: 600;
+    color: #dc2626;
+}
+.recommendations li.priority-high:before {
+    color: #dc2626;
+    content: "⚠";
+}
+        
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .prediction-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .button-container {
+                flex-direction: column;
+            }
+            
+            .action-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-content">
+            <a href="{% url 'home' %}" class="logo">AI HEALTH ADVISOR</a>
+            <nav class="main-nav">
+                {% if user.is_authenticated %}
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="action-button">Log Out</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}" class="action-button">Log In</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <div class="prediction-container">
+        <h1 class="prediction-header">AI Health Prediction</h1>
+        
+        <form id="predictionForm">
+            <div class="input-section">
+                <label for="symptoms" class="form-label">Describe your symptoms (comma separated):</label>
+                <textarea 
+                    id="symptoms" 
+                    class="symptoms-input" 
+                    placeholder="Example: headache, fever for 3 days, sore throat, fatigue, vomiting"
+                    required
+                ></textarea>
+            </div>
+            
+            <button type="submit" class="predict-button">
+                <span id="buttonText">Analyze Symptoms</span>
+                <span class="spinner" id="loadingSpinner"></span>
+            </button>
+        </form>
+        
+        <div class="results-section" id="resultsSection">
+            <h3 class="result-title">Prediction Result</h3>
+            <div class="prediction-result" id="predictionResult">No prediction yet</div>
+            
+            <div class="confidence-meter">
+                <div class="confidence-level" id="confidenceLevel"></div>
+            </div>
+            <div class="confidence-value" id="confidenceValue">Confidence: 0%</div>
+            
+            <div class="suggestions">
+                <h4 class="suggestions-title">Recommended Actions</h4>
+                <ul class="recommendations" id="recommendations">
+                    <!-- Will be populated by JavaScript -->
+                </ul>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <a href="{% url 'home' %}" class="action-button">Return to Home</a>
+            <a href="{% url 'predict' %}" class="action-button">New Prediction</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show loading state
+            document.getElementById('buttonText').textContent = 'Analyzing';
+            document.getElementById('loadingSpinner').style.display = 'block';
+            
+            // Get symptoms
+            const symptoms = document.getElementById('symptoms').value;
+    
+            // Make an AJAX call to the Django backend
+            fetch("{% url 'predict' %}", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'  // Include CSRF token for security
+                },
+                body: new URLSearchParams({
+                    'symptoms': symptoms
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);  // Handle error
+                } else {
+                    displayResults(data);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            })
+            .finally(() => {
+                // Reset button
+                document.getElementById('buttonText').textContent = 'Analyze Symptoms';
+                document.getElementById('loadingSpinner').style.display = 'none';
+            });
+        });
+        
+        function displayResults(data) {
+    const resultsSection = document.getElementById('resultsSection');
+    resultsSection.style.display = 'block';
+    
+    // Update prediction result
+    document.getElementById('predictionResult').textContent = data.disease;
+    document.getElementById('confidenceLevel').style.width = data.confidence + '%';
+    document.getElementById('confidenceValue').textContent = `Confidence: ${data.confidence}%`;
+    
+    // Add severity indicator
+    const severityIndicator = document.createElement('div');
+    severityIndicator.className = 'severity-indicator';
+    severityIndicator.textContent = `Severity: ${data.severity}`;
+    severityIndicator.style.color = getSeverityColor(data.severity);
+    document.getElementById('predictionResult').appendChild(severityIndicator);
+    
+    // Populate recommendations
+    const recommendationsList = document.getElementById('recommendations');
+    recommendationsList.innerHTML = '';
+    
+    data.recommendations.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        recommendationsList.appendChild(li);
+    });
+    
+    // Smooth scroll to results
+    resultsSection.scrollIntoView({ behavior: 'smooth' });
+}
+
+function getSeverityColor(severity) {
+    const colors = {
+        'mild': '#10b981',    // Green
+        'moderate': '#f59e0b', // Yellow
+        'severe': '#ef4444'    // Red
+    };
+    return colors[severity.toLowerCase()] || '#6b7280';
+}
+const confidenceLevel = document.getElementById('confidenceLevel');
+    confidenceLevel.style.width = data.confidence + '%';
+    
+    // Remove all existing color classes
+    confidenceLevel.classList.remove('confidence-low', 'confidence-medium', 'confidence-high');
+    
+    // Add appropriate class based on confidence level
+    if (data.confidence < 50) {
+        confidenceLevel.classList.add('confidence-low');
+    } else if (data.confidence < 75) {
+        confidenceLevel.classList.add('confidence-medium');
+    } else {
+        confidenceLevel.classList.add('confidence-high');
+    }
+    </script>
+</body>
+</html>

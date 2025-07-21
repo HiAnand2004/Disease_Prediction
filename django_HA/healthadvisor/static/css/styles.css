@@ -1,0 +1,267 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #1e293b;
+  --secondary-color: #0ea5e9;
+  --background-light: #f1f5f9;
+  --text-color: #1f2937;
+  --text-light: #64748b;
+  --border-radius: 8px;
+  --shadow-light: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.3s;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--background-light);
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.page-container {
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  background: #fff;
+  box-shadow: var(--shadow-light);
+  border-radius: var(--border-radius);
+  padding: 1rem 2rem;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color var(--transition-speed);
+}
+
+.nav-link:hover {
+  color: var(--secondary-color);
+}
+
+.logout-btn {
+  background: var(--secondary-color);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition-speed);
+}
+
+.logout-btn:hover {
+  background: #0284c7;
+  transform: translateY(-2px);
+}
+
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+/* Hero Section */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-top: 3rem;
+  padding: 3rem 0;
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.hero-cta {
+  margin-top: 2rem;
+}
+
+.primary-button {
+  background: var(--secondary-color);
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-speed);
+}
+
+.primary-button:hover {
+  background: #0284c7;
+  transform: scale(1.05);
+}
+
+/* How it Works */
+.how-it-works-section {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 3rem 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.steps-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.step-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-light);
+  transition: var(--transition-speed);
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* CTA Section */
+.cta-section {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #fff;
+  text-align: center;
+  padding: 3rem;
+  border-radius: var(--border-radius);
+  margin-top: 3rem;
+}
+
+.cta-text {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.secondary-button {
+  background: #fff;
+  color: var(--primary-color);
+  padding: 0.75rem 2rem;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition-speed);
+}
+
+.secondary-button:hover {
+  background: #e2e8f0;
+  transform: scale(1.05);
+}
+
+/* Footer */
+.main-footer {
+  padding: 2rem 0;
+  margin-top: 4rem;
+  text-align: center;
+  background: #1e293b;
+  color: #fff;
+  border-radius: var(--border-radius);
+}
+
+.footer-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0 10px;
+  transition: var(--transition-speed);
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.social-icons a {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: var(--transition-speed);
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 1rem;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .cta-section {
+    padding: 2rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
